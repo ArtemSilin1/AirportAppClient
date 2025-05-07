@@ -3,7 +3,7 @@
   --dark-grey: #24262C;
   --deep-dark-grey: #1C1D22;
   --button-color: #4B69FF;
-  --hover-button-color: #435ee3;
+  --hover-button-color: #3d56d1;
 }
 
 *, *::after, *::before {
@@ -15,6 +15,7 @@ body {
   font-family: "Exo 2", sans-serif;
   background-color: var(--light-grey);
   color: #fff;
+  overflow: hidden;
 }
 
 a {
@@ -32,4 +33,10 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.dir_column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
