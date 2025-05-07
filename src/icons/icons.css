@@ -1,0 +1,23 @@
+.icon {
+   display: inline-block;
+   width: 25px;
+   height: 25px;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+   cursor: pointer;
+   border-radius: 3px;
+   background-color: transparent;
+   transition: background-color .2s ease;
+}
+.icon:hover {
+   background-color: var(--button-color);
+   transition: background-color .2s ease;
+}
+/* ------------ */
+.profile_icon {
+   background-image: url("./profile.svg");
+}
+.notifications_icon {
+   background-image: url("./Notifications.svg");
+}

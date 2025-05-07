@@ -1,0 +1,35 @@
+:root {
+  --light-grey: #292B31;
+  --dark-grey: #24262C;
+  --deep-dark-grey: #1C1D22;
+  --button-color: #4B69FF;
+  --hover-button-color: #435ee3;
+}
+
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Exo 2", sans-serif;
+  background-color: var(--light-grey);
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ------------ */
+
+.space_between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
