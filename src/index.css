@@ -27,6 +27,21 @@ ul {
   list-style: none;
 }
 
+button {
+  background-color: var(--button-color);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+button:hover {
+  background-color: var(--hover-button-color);
+  transition: background-color .2s ease;
+}
+
 /* ------------ */
 
 .space_between {
@@ -39,4 +54,54 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board_admin_panel {
+  position: fixed;
+  bottom: 20px;
+  right: 40px;
+  width: 500px;
+  background-color: var(--deep-dark-grey);
+  padding: 10px;
+  border-radius: 15px;
+}
+.board_admin_panel button {
+  margin-right: 15px;
+}
+
+.modal_background {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.modal_background.active {
+  display: flex;
+}
+.modal_container {
+  width: 600px;
+  height: 600px;
+  border-radius: 15px;
+  background-color: var(--dark-grey);
+}
+.modal_header {
+  width: calc(100% - 25px);
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px auto;
 }

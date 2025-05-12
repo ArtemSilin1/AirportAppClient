@@ -21,3 +21,19 @@
 .notifications_icon {
    background-image: url("./Notifications.svg");
 }
+.exit_icon {
+   background-image: url("./exit.svg");
+}
+.cross_icon {
+   background-image: url("./cross.svg");
+}
+.cross_icon:hover {
+   background-color: transparent !important;
+}
+.edit_icon {
+   background-image: url("./edit.svg");
+   cursor: default;
+}
+.edit_icon:hover {
+   background-color: transparent !important;
+}

@@ -15,19 +15,15 @@ function Auth() {
 
    const validateForm = () => {
       const { name, password } = formData;
-
-      if (!isLogin) {
-         if (!/^[a-zA-Zа-яА-ЯёЁ\s]+$/.test(name)) {
-            return 'Имя должно содержать только буквы.';
-         }
-         if (password.length < 6) {
-            return 'Пароль должен содержать более 6 символов.';
-         }
-      } else {
-         if (password.length < 6) {
-            return 'Пароль должен содержать более 6 символов.';
-         }
+         
+      if (!isLogin && !/^[a-zA-Zа-яА-ЯёЁ\s]+$/.test(name)) {
+        return 'Имя должно содержать только буквы.';
       }
+   
+      if (password.length < 6) {
+        return 'Пароль должен содержать более 6 символов.';
+      }
+   
       return '';
    }
 
@@ -37,7 +33,7 @@ function Auth() {
    }
 
    const handleSubmit = async (e) => {
-      e.preventDefault();
+      e.preventDefault()
       const validationError = validateForm()
       if (validationError) {
          alert(validationError)
@@ -61,7 +57,7 @@ function Auth() {
                   name: formData.name,
                   password: String(hashedPassword),
                   email: formData.email,
-
+                  userRole: Boolean(formData.userRole)
                }),
             })
 
