@@ -26,7 +26,7 @@ header {
   height: 100%;
 }
 .header_container div {
-  width: 80px;
+  width: 85px;
 }
 .profile_link {
   height: 25px;
@@ -64,6 +64,10 @@ header {
   border-radius: 4px;
   border: none;
   height: 20px;
+  padding: 5px;
+}
+.auth_selector {
+  padding: 0 !important;
 }
 .auth_button {
   background-color: var(--button-color);
@@ -167,8 +171,10 @@ header {
 .profile_clock {
   opacity: 0.4;
   width: 100%;
-  text-align: left;
-  margin-bottom: 50px;
+  text-align: center;
+}
+.profile_buttons_container {
+  width: 250px;
 }
 .help_text {
   position: fixed;
@@ -210,4 +216,27 @@ header {
 .board_form button {
   position: absolute;
   bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.generate_new_token {
+  width: 250px;
+}
+
+.admin_panel_container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+}
+.admin_panel_container_item {
+  margin: 0 120px;
+}
+.active_tokens_container h3 {
+  margin-bottom: 50px;
+}
+.active_tokens_item {
+  margin: 10px 0 5px;
+  border-bottom: 1px solid var(--button-color);
+  padding-bottom: 5px;
 }

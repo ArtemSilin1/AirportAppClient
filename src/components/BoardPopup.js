@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import hashPassword from "../internal/HashPassword";
 import { DecodeJWT } from "../internal/DecodeJWT";
 
-function BoardModal({ modal, setModal, flightData }) {
+function BoardModal({ modal, setModal, flightData, isDeleteMode }) {
    const [formData, setFormData] = useState({
       status: "",
-      password: ""
+      password: "",
+      confirmFlightNumber: "",
    })
 
    const handleChange = (e) => {
@@ -16,12 +17,22 @@ function BoardModal({ modal, setModal, flightData }) {
 
    const handleFlightUpdate = async (e) => {
       e.preventDefault()
+      if (isDeleteMode && formData.confirmFlightNumber !== flightData.flightNumber) {
+         setModal(false)
+         alert("неверный номер рейса")
+         return
+      }
+
       let hashedPassword = hashPassword(formData.password)
       let decoded = DecodeJWT()
       let username = decoded.username
+
+      const url = isDeleteMode ? "http://localhost:8081/board/deleteFlight" : "http://localhost:8081/board/updateBoardStatus"
+      const method = isDeleteMode ? "DELETE" : "PUT"
+
       try {
-         const response = await fetch("http://localhost:8081/board/updateBoardStatus", {
-            method: "PUT",
+         const response = await fetch(url, {
+            method: method,
             headers: {
                "Content-Type": "application/json",
             },
@@ -46,12 +57,12 @@ function BoardModal({ modal, setModal, flightData }) {
          else {
             setModal(false)
             window.location.reload()
-            alert("Обновлено")
+            isDeleteMode ? alert("Удалено") : alert("Обновлено")
          }
       }
       catch(error) {
          setModal(false)
-         alert(error)
+         alert('Ошибка при отправке формы')
       }
    }
 
@@ -62,22 +73,35 @@ function BoardModal({ modal, setModal, flightData }) {
                <div className="modal_header">
                   <span className="icon cross_icon" onClick={() => setModal(false)} />
                </div>
-               <h3>Редактировать рейс номер {flightData.flightNumber}</h3>
+               <h3>{isDeleteMode ? 'Удалить' : 'Редактировать'} рейс номер {flightData.flightNumber}</h3>
    
                <form onSubmit={handleFlightUpdate} className="board_form">
-                  <div className="board_form_container dir_column">
-                     <label>Изменить статус</label>
-                     <select
-                        name='status'
-                        className='auth_input'
-                        value={formData.status}
-                        onChange={handleChange}
-                     >
-                        <option value="По расписанию">По расписанию</option>
-                        <option value="Задержан">Задержан</option>
-                        <option value="Отменён">Отменён</option>
-                     </select>
-                  </div>
+                  {isDeleteMode ? 
+                     <div className="board_form_container dir_column">
+                        <label>Подтвердите номер рейса</label>
+                        <input
+                           name='confirmFlightNumber'
+                           type="text"
+                           className='auth_input'
+                           value={formData.confirmFlightNumber}
+                           onChange={handleChange}
+                        />
+                     </div>
+                     :
+                     <div className="board_form_container dir_column">
+                        <label>Изменить статус</label>
+                        <select
+                           name='status'
+                           className='auth_input auth_selector'
+                           value={formData.status}
+                           onChange={handleChange}
+                        >
+                           <option value="По расписанию">По расписанию</option>
+                           <option value="Задержан">Задержан</option>
+                           <option value="Отменён">Отменён</option>
+                        </select>
+                     </div>
+                  }
 
                   <div className="board_form_container dir_column">
                      <label>Подтвердите пароль</label>
@@ -90,7 +114,7 @@ function BoardModal({ modal, setModal, flightData }) {
                      />
                   </div>
 
-                  <button>Изменить</button>
+                  <button>{isDeleteMode ? 'Удалить' : 'Изменить'}</button>
                </form>
             </div>
          </div>

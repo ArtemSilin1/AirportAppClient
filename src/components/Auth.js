@@ -9,7 +9,6 @@ function Auth() {
       name: "",
       password: "",
       email: "",
-      userRole: "",
       confirmPassword: ""
    })
 
@@ -42,7 +41,7 @@ function Auth() {
             alert("пароли не совпадают")
             return
          }
-         const url = isLogin ? "http://localhost:8081/users/login" : "http://localhost:8081/users/registration";
+         const url = isLogin ? "http://localhost:8081/users/login" : "http://localhost:8081/users/registration"
 
          let hashedPassword = hashPassword(formData.password)
 
@@ -57,7 +56,6 @@ function Auth() {
                   name: formData.name,
                   password: String(hashedPassword),
                   email: formData.email,
-                  userRole: Boolean(formData.userRole)
                }),
             })
 
@@ -69,7 +67,7 @@ function Auth() {
                alert(data.message)
             }
          } catch (error) {
-            alert('Ошибка при отправке формы', false)
+            alert('Ошибка при отправке формы')
          }
       }
    }
@@ -143,21 +141,6 @@ function Auth() {
                         onChange={handleChange}
                         required
                      />
-                  </div>
-               )}
-
-               {!isLogin && (
-                  <div className="form_input_container dir_column">
-                     <legend>Выберите роль</legend>
-                        <select
-                           name='userRole'
-                           className='auth_input'
-                           value={formData.userRole}
-                           onChange={handleChange}
-                        >
-                           <option value={false}>Пользователь</option>
-                           <option value={true}>Сотрудник</option>
-                        </select>
                   </div>
                )}
 
