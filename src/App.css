@@ -240,3 +240,23 @@ header {
   border-bottom: 1px solid var(--button-color);
   padding-bottom: 5px;
 }
+
+.buy_ticket_form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.select_route_panel  {
+  width: 400px !important;
+  height: 60px;
+  margin: 10px auto;
+}
+.buy_ticket button {
+  width: 250px;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.buy_ticket button.active {
+  opacity: 1;
+  cursor: pointer;
+}

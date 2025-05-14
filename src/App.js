@@ -8,6 +8,7 @@ import Auth from './components/Auth';
 import Board from './routes/Board'
 import Profile from './routes/Profile'
 import AdminPanel from './routes/AdminPanel';
+import Tickets from './routes/Tickets';
 
 function App() {
   const [currentDate, setCurrentDate] = useState('')
@@ -79,10 +80,12 @@ function App() {
           <li className={`nav_bar_item ${location.pathname === '/' ? 'active' : ''}`}>
             <Link to='/'>Главная</Link>
           </li>
-          <li className='nav_bar_item'>Купить билет</li>
+          <li className={`nav_bar_item ${location.pathname === '/tickets/buy-ticket' ? 'active' : ''}`}>
+            <Link to='/tickets/buy-ticket'>Купить билет</Link>
+          </li>
           <li className='nav_bar_item'>Рейсы</li>
-          <li className={`nav_bar_item ${location.pathname === '/tickets' ? 'active' : ''}`}>
-            <Link to='/tickets'>Мои билеты</Link>
+          <li className={`nav_bar_item ${location.pathname === '/tickets/user-tickets' ? 'active' : ''}`}>
+            <Link to='/tickets/my-tickets'>Мои билеты</Link>
           </li>
           {decodedJWT.masterAdmin ? 
             <li className={`nav_bar_item ${location.pathname === '/admin-panel' ? 'active' : ''}`}>
@@ -104,6 +107,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Board isAdmin={isAdmin} />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/tickets/buy-ticket' element={<Tickets />} />
+
 
             <Route path='admin-panel' element={<AdminPanel />} />
           </Routes>
