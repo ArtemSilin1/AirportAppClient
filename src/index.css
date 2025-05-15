@@ -66,13 +66,13 @@ button:hover {
   position: fixed;
   bottom: 20px;
   right: 40px;
-  width: 500px;
+  height: 200px;
   background-color: var(--deep-dark-grey);
   padding: 10px;
   border-radius: 15px;
 }
 .board_admin_panel button {
-  margin-right: 15px;
+  margin-top: 15px;
 }
 
 .modal_background {

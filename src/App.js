@@ -9,6 +9,7 @@ import Board from './routes/Board'
 import Profile from './routes/Profile'
 import AdminPanel from './routes/AdminPanel';
 import Tickets from './routes/Tickets';
+import UserTickets from './routes/UserTickets';
 
 function App() {
   const [currentDate, setCurrentDate] = useState('')
@@ -84,7 +85,7 @@ function App() {
             <Link to='/tickets/buy-ticket'>Купить билет</Link>
           </li>
           <li className='nav_bar_item'>Рейсы</li>
-          <li className={`nav_bar_item ${location.pathname === '/tickets/user-tickets' ? 'active' : ''}`}>
+          <li className={`nav_bar_item ${location.pathname === '/tickets/my-tickets' ? 'active' : ''}`}>
             <Link to='/tickets/my-tickets'>Мои билеты</Link>
           </li>
           {decodedJWT.masterAdmin ? 
@@ -108,6 +109,7 @@ function App() {
             <Route path='/' element={<Board isAdmin={isAdmin} />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/tickets/buy-ticket' element={<Tickets />} />
+            <Route path='/tickets/my-tickets' element={<UserTickets />} />
 
 
             <Route path='admin-panel' element={<AdminPanel />} />

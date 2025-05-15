@@ -124,7 +124,7 @@ function Board({ isAdmin }) {
          </div>
 
          {isAdmin ? 
-            <div className="board_admin_panel">
+            <div className="board_admin_panel dir_column">
                <button className="add_flight_admin_button" onClick={() => OpenCreateModal()}>Новый рейс</button>
                <button className="add_flight_admin_button" onClick={() => ChangeEditMode()}>Редактировать</button>
                <button className="add_flight_admin_button" onClick={() => ChangeDeleteMode()}>Удалить</button>

@@ -260,3 +260,12 @@ header {
   opacity: 1;
   cursor: pointer;
 }
+
+.ticket {
+  width: 400px;
+  height: 60px;
+  margin: 10px auto;
+  border: 1px solid var(--button-color);
+  padding: 5px;
+  border-radius: 5px;
+}
