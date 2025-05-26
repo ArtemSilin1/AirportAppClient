@@ -26,7 +26,7 @@ header {
   height: 100%;
 }
 .header_container div {
-  width: 85px;
+  width: 100px;
 }
 .profile_link {
   height: 25px;
@@ -268,4 +268,17 @@ header {
   border: 1px solid var(--button-color);
   padding: 5px;
   border-radius: 5px;
+}
+
+.report_container {
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+.generate_report_button {
+  width: 150px;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
 }
