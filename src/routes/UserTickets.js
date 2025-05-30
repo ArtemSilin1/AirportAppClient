@@ -23,7 +23,7 @@ function UserTickets() {
 
       if (response.ok) {
         if (data.rows && Array.isArray(data.rows)) {
-          setUserTickets(data.rows);
+          setUserTickets(data.rows || []);
           setHaveNoTickets(data.rows.length === 0);
         } else {
           console.error("Некорректный формат ответа:", data);

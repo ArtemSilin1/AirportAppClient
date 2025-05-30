@@ -19,7 +19,7 @@ function AdminPanel() {
               setTokens([]);
             } else {
               setNoTokens(false);
-              setTokens(data);
+              setTokens(data || []);
             }
          }  else if (response.status === 404) {
             setNoTokens(true);

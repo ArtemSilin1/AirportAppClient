@@ -11,6 +11,7 @@ import AdminPanel from './routes/AdminPanel';
 import Tickets from './routes/Tickets';
 import UserTickets from './routes/UserTickets';
 import Report from './routes/Report';
+import Notifications from './routes/Notifications';
 
 function App() {
   const [currentDate, setCurrentDate] = useState('')
@@ -26,20 +27,20 @@ function App() {
   const isAdmin = decodedJWT.role
 
   useEffect(() => {
-     const updateDateTime = () => {
-     const now = new Date()
-      
-     // Дата
-     const year = now.getFullYear()
-     const month = String(now.getMonth() + 1).padStart(2, '0')
-     const day = String(now.getDate()).padStart(2, '0')
-     setCurrentDate(`${year}-${month}-${day}`)
+    const updateDateTime = () => {
+    const now = new Date()
      
-     // Время
-     const hours = String(now.getHours()).padStart(2, '0')
-     const minutes = String(now.getMinutes()).padStart(2, '0')
-     const seconds = String(now.getSeconds()).padStart(2, '0')
-     setCurrentTime(`${hours}:${minutes}:${seconds}`)
+    // Дата
+    const year = now.getFullYear()
+    const month = String(now.getMonth() + 1).padStart(2, '0')
+    const day = String(now.getDate()).padStart(2, '0')
+    setCurrentDate(`${year}-${month}-${day}`)
+    
+    // Время
+    const hours = String(now.getHours()).padStart(2, '0')
+    const minutes = String(now.getMinutes()).padStart(2, '0')
+    const seconds = String(now.getSeconds()).padStart(2, '0')
+    setCurrentTime(`${hours}:${minutes}:${seconds}`)
     }
 
     updateDateTime();
@@ -65,12 +66,12 @@ function App() {
             </div>
 
             <div className='space_between'>
-              <Link className='header_link'>
-                <span className='icon notifications_icon' />
+              <Link to='/notifications' className='header_link'>
+                <span className={`icon notifications_icon ${location.pathname === '/notifications' ? 'active' : ''}`} />
               </Link>
   
               <Link to='/profile' className='header_link'>
-                <span className='icon profile_icon' />
+                <span className={`icon profile_icon ${location.pathname === '/profile' ? 'active' : ''}`} />
               </Link>
 
               <span className='icon exit_icon' onClick={handleLogout} />
@@ -85,7 +86,6 @@ function App() {
           <li className={`nav_bar_item ${location.pathname === '/tickets/buy-ticket' ? 'active' : ''}`}>
             <Link to='/tickets/buy-ticket'>Купить билет</Link>
           </li>
-          <li className='nav_bar_item'>Рейсы</li>
           <li className={`nav_bar_item ${location.pathname === '/tickets/my-tickets' ? 'active' : ''}`}>
             <Link to='/tickets/my-tickets'>Мои билеты</Link>
           </li>
@@ -113,6 +113,7 @@ function App() {
             <Route path='/tickets/my-tickets' element={<UserTickets />} />
             <Route path='/tickets/report' element={<Report />} />
 
+            <Route path='/notifications' element={<Notifications />} />
 
             <Route path='admin-panel' element={<AdminPanel />} />
           </Routes>

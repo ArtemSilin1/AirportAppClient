@@ -56,7 +56,7 @@ function Board({ isAdmin }) {
          }
          else if (response.ok) {
             const data = await response.json()
-            setBoardTable(data)
+            setBoardTable(data || [])
          }
          else if (response.status === 404) {
             setNotFoundMessage(true)
